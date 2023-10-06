@@ -1,0 +1,30 @@
+a {
+  color: #0078d4;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #00539f;
+}
+
+.tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+}
+
+.tag {
+  border: 1px solid #a1a1a1;
+  border-radius: 0.5em;
+  padding: 0.3em 0.6em;
+  font-size: 1rem;
+  background-color: #f8fcfd;
+  transition: background-color 0.3s ease;
+}
+
+.tag:hover {
+  background-color: #e0f0ff;
+}
