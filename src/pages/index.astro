@@ -1,8 +1,34 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 const pageTitle = "Home Page";
+import Greeting from "../components/Greeting.jsx";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h2>My awesome blog subtitle</h2>
+  <h2>Marquiblog 😎</h2>
+  <Greeting
+    client:load
+    messages={[
+      "Hi",
+      "Hello",
+      "Howdy",
+      "Hey there",
+      "Greetings",
+      "Good morning",
+      "Good afternoon",
+      "Good evening",
+      "Hey",
+      "Hi there",
+      "Hiya",
+      "Hey you",
+      "Hello there",
+      "How's it going?",
+      "What's up?",
+      "Yo",
+      "Hi friend",
+      "Hi everyone",
+      "Hey folks",
+      "Hey buddy",
+    ]}
+  />
 </BaseLayout>
