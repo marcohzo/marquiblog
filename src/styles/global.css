@@ -18,6 +18,15 @@ body,
   box-sizing: border-box;
 }
 
+/* Variables CSS para mejorar la coherencia y facilitar los cambios */
+:root {
+  --primary-color: #ff9776;
+  --secondary-color: #c44f4f;
+  --hover-color: #fff;
+  --text-bold: bold;
+  --transition-speed: 0.3s;
+}
+
 h1 {
   margin: 1rem 0;
   font-size: 2.5rem;

@@ -1,11 +1,11 @@
 a {
   text-decoration: none;
-  margin-right: 20px;
-  color: #c44f4f;
-  font-weight: bold;
-  transition: color 0.3s;
+  margin: 0 auto;
+  color: var(--secondary-color);
+  font-weight: var(--text-bold);
+  transition: color var(--transition-speed);
 }
 
 a:hover {
-  color: #007bff;
+  color: var(--hover-color);
 }
