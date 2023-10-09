@@ -16,7 +16,11 @@ const { pageTitle } = Astro.props;
   <body>
     <Header />
     <main class="container mx-auto py-4 min-h-[80vh]">
-      <h1>{pageTitle}</h1>
+      <h1
+        class="text-4xl font-bold mb-4 text-center sm:text-left text-gray-900"
+      >
+        {pageTitle}
+      </h1>
       <slot />
     </main>
     <Footer />
