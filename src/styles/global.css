@@ -4,15 +4,27 @@ html {
 }
 
 body {
-  margin: 0 auto;
+  margin: 0;
   width: 100%;
-  max-width: 80ch;
-  padding: 1rem;
   line-height: 1.5;
 }
 
+html,
+body,
+:root,
 * {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
+}
+
+/* Variables CSS para mejorar la coherencia y facilitar los cambios */
+:root {
+  --primary-color: #ff9776;
+  --secondary-color: #c44f4f;
+  --hover-color: #fff;
+  --text-bold: bold;
+  --transition-speed: 0.3s;
 }
 
 h1 {

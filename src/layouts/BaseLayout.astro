@@ -1,5 +1,5 @@
 ---
-import Header from "../components/Header.astro";
+import Header from "../components/nav/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 const { pageTitle } = Astro.props;
@@ -15,8 +15,14 @@ const { pageTitle } = Astro.props;
   </head>
   <body>
     <Header />
-    <h1>{pageTitle}</h1>
-    <slot />
+    <main class="container mx-auto py-4 min-h-[80vh]">
+      <h1
+        class="text-4xl font-bold mb-4 text-center sm:text-left text-gray-900"
+      >
+        {pageTitle}
+      </h1>
+      <slot />
+    </main>
     <Footer />
     <script>
       import "../scripts/menu.js";
