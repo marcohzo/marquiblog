@@ -1,23 +1,45 @@
 .hamburger {
-  padding-right: 20px;
+  padding: 0.7rem 0.3rem;
   cursor: pointer;
 }
 
 .hamburger .line {
   display: block;
-  width: 40px;
-  height: 5px;
-  margin-bottom: 10px;
-  background-color: #ff9776;
+  width: 35px;
+  height: 3px;
+  margin-bottom: 7px;
+  background-color: var(--primary-color);
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.hamburger .line:last-child {
+  margin-bottom: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  background-color: #333;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hamburger:hover .line {
+  background-color: #fff;
 }
 
 .nav-links {
   width: 100%;
   top: 5rem;
   left: 48px;
-  background-color: #ff9776;
-  display: none;
+  background-color: #333;
   margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
 }
 
 .nav-links a {
@@ -28,6 +50,8 @@
   font-size: 1.2rem;
   font-weight: bold;
   text-transform: uppercase;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .nav-links a:hover,
@@ -36,7 +60,7 @@ a:focus {
 }
 
 .expanded {
-  display: unset;
+  max-height: 200px;
 }
 
 @media screen and (min-width: 636px) {
@@ -53,16 +77,17 @@ a:focus {
     transition: background-color 0.3s, color 0.3s;
   }
   .nav-links {
-    margin-left: 5em;
-    display: block;
-    position: static;
+    display: flex;
+    flex-direction: row;
     width: auto;
     background: none;
+    min-height: 50px;
   }
 
   .nav-links a {
-    display: inline-block;
-    padding: 15px 20px;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
   }
 
   .hamburger {
@@ -71,8 +96,5 @@ a:focus {
   .navbar a:hover {
     background-color: #ff9776;
     color: #333;
-  }
-  .hamburger {
-    display: none;
   }
 }
