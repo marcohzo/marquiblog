@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle = "New Blog";
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const title = data.get("title");
+    const description = data.get("description");
+    //const image = data.get("image");
+    const author = data.get("author");
+    const tags = data.getAll("tags");
+    const response = {
+      title: title,
+      description: description,
+      author: author,
+      tags: tags,
+    };
+    console.log(response);
+    // Resto de la lógica de procesamiento
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <form class="p-4 max-w-xl mx-auto" method="POST">
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
+        Título:
+      </label>
+      <input
+        class="w-full border rounded py-2 px-3 leading-tight focus:outline-none focus:border-blue-500"
+        type="text"
+        name="title"
+        required
+      />
+    </div>
+
+    <div class="mb-4">
+      <label
+        class="block text-gray-700 text-sm font-bold mb-2"
+        for="description"
+      >
+        Descripción (Cuerpo del formulario):
+      </label>
+      <textarea
+        class="w-full border rounded py-2 px-3 leading-tight focus:outline-none focus:border-blue-500"
+        name="description"
+        required></textarea>
+    </div>
+
+    <!-- <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="image">
+        Imagen (opcional):
+      </label>
+      <input
+        class="w-full border rounded py-2 px-3 leading-tight focus:outline-none focus:border-blue-500"
+        type="file"
+        name="image"
+      /> -->
+  </form>
+
+  <div class="mb-4">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="author">
+      Escrito por:
+    </label>
+    <input
+      class="w-full border rounded py-2 px-3 leading-tight focus:outline-none focus:border-blue-500"
+      type="text"
+      name="author"
+      value="Nombre del usuario actual"
+      readonly
+    />
+  </div>
+
+  <div class="mb-4">
+    <label class="block text-gray-700 text-sm font-bold mb-2" for="tags">
+      Tags:
+    </label>
+    <select
+      class="w-full border rounded py-2 px-3 leading-tight focus:outline-none focus:border-blue-500"
+      name="tags"
+      multiple
+    >
+      <option value="technology">Technology</option>
+      <option value="artificial-intelligence">Artificial Intelligence</option>
+      <!-- Agrega más opciones de etiquetas existentes aquí -->
+    </select>
+  </div>
+
+  <button
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+  >
+    Crear Publicación
+  </button>
+</BaseLayout>
