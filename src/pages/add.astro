@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Agregar un nuevo blog">
+  <h1>Agregar un nuevo artículo</h1>
+  <form method="post" action="/api/blogs">
+    <label for="titulo">Título</label>
+    <input type="text" id="titulo" name="titulo" />
+    <label for="subtitulo">Subtítulo</label>
+    <input type="text" id="subtitulo" name="subtitulo" />
+    <label for="cuerpo">Cuerpo</label>
+    <textarea id="cuerpo" name="cuerpo"></textarea>
+    <button type="submit">Publicar artículo</button>
+  </form>
+</BaseLayout>

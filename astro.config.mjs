@@ -8,8 +8,8 @@ import node from "@astrojs/node";
 export default defineConfig({
   site: "https://marquiblog.vercel.app/",
   integrations: [preact(), tailwind()],
-  output: "server",
+  output: "hybrid",
   adapter: node({
-    mode: "standalone"
-  })
+    mode: "standalone",
+  }),
 });

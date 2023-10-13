@@ -1,0 +1,56 @@
+---
+import { app } from "../../firebase/server";
+import { getFirestore } from "firebase-admin/firestore";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+interface Blog {
+  titulo: string;
+  subtitulo: string;
+  cuerpo: string;
+}
+
+const { id } = Astro.params;
+
+if (!id) {
+  return Astro.redirect("/404");
+}
+
+const db = getFirestore(app);
+const blogsRef = db.collection("Blogs");
+const blogSnapshot = await blogsRef.doc(id).get();
+
+if (!blogSnapshot.exists) {
+  return Astro.redirect("/404");
+}
+
+const blog = blogSnapshot.data() as Blog;
+---
+
+<BaseLayout title={`Editar ${blog.titulo}`}>
+  <h1>Editar {blog.titulo}</h1>
+  <p>Aquí puedes editar o borrar los datos de tus artículos.</p>
+  <form method="post" action={`/api/blogs/${id}`}>
+    <label for="titulo">Título</label>
+    <input type="text" id="titulo" name="titulo" value={blog.titulo} />
+    <label for="subtitulo">Subtítulo</label>
+    <input type="text" id="subtitulo" name="subtitulo" value={blog.subtitulo} />
+    <label for="cuerpo">Cuerpo</label>
+    <textarea id="cuerpo" name="cuerpo">{blog.cuerpo}</textarea>
+    <button type="submit">Editar artículo</button>
+  </form>
+  <button type="button" id="delete-document">Eliminar</button>
+</BaseLayout>
+<script>
+  const deleteButton = document.getElementById(
+    "delete-document"
+  ) as HTMLButtonElement;
+  const url = document.querySelector("form")?.getAttribute("action") as string;
+  deleteButton.addEventListener("click", async () => {
+    const response = await fetch(url, {
+      method: "DELETE",
+    });
+    if (response.redirected) {
+      window.location.assign(response.url);
+    }
+  });
+</script>

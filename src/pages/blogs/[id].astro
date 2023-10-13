@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { app } from "../../firebase/server";
+import { getFirestore } from "firebase-admin/firestore";
+
+interface Blog {
+  titulo: string;
+  subtitulo: string;
+  cuerpo: string;
+}
+
+const { id } = Astro.params;
+
+if (!id) {
+  return Astro.redirect("/404");
+}
+
+const db = getFirestore(app);
+const blogsRef = db.collection("Blogs");
+const blogSnapshot = await blogsRef.doc(id).get();
+
+if (!blogSnapshot.exists) {
+  return Astro.redirect("/404");
+}
+
+const blog = blogSnapshot.data() as Blog;
+---
+
+<BaseLayout title={blog.titulo}>
+  <h1>{blog.titulo}</h1>
+  <p>Subtítulo: {blog.subtitulo}</p>
+  <p>Cuerpo: {blog.cuerpo}</p>
+</BaseLayout>
