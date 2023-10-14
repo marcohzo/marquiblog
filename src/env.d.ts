@@ -15,6 +15,8 @@ interface ImportMetaEnv {
     readonly FIREBASE_APP_ID: string;
     readonly FIREBASE_MEASUREMENT_ID: string;
     readonly FIREBASE_UNIVERSE_DOMAIN: string;
+    readonly DEPLOY_URL: string;
+    readonly NODE_ENV: string;
   }
 
   interface ImportMeta {
