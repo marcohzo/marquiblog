@@ -2,6 +2,14 @@ import type { APIRoute } from "astro";
 import { app } from "../../../firebase/server";
 import { getFirestore } from "firebase-admin/firestore";
 
+export const GET: APIRoute = async ({params, request}) => {
+  return new Response(
+    JSON.stringify({
+      name: 'Astro',
+      url: 'https://astro.build/'
+    })
+  )
+}
 export const POST: APIRoute = async ({ request, redirect }) => {
   console.log('in api route')
   const formData = await request.formData();
