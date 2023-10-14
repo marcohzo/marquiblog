@@ -11,6 +11,7 @@ export const GET: APIRoute = async ({params, request}) => {
   )
 }
 export const POST: APIRoute = async ({ request, redirect }) => {
+  try {
   console.log('in api route')
   const formData = await request.formData();
   console.log(formData)
@@ -23,8 +24,6 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       status: 400,
     });
   }
-
-  try {
     const db = getFirestore(app);
     const articlesRef = db.collection("Blogs");
     await articlesRef.add({
@@ -32,10 +31,11 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       subtitulo,
       cuerpo,
     });
+    return redirect("/");
   } catch (error) {
+    console.log(error)
     return new Response("Algo salió mal", {
       status: 500,
     });
   }
-  return redirect("/");
 };
