@@ -1,22 +1,13 @@
 ---
+export const prerender = false;
 import { app } from "../../firebase/server";
 import { getFirestore } from "firebase-admin/firestore";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getBlogs } from "../../data/getBlogs";
 
 interface Blog {
   titulo: string;
   subtitulo: string;
   cuerpo: string;
-}
-export async function getStaticPaths() {
-  const blogs = await getBlogs();
-  const blogsId = blogs.map((blog) => {
-    return {
-      params: { id: blog.id },
-    };
-  });
-  return blogsId;
 }
 
 const { id } = Astro.params;
