@@ -6,7 +6,7 @@ const API_URL = `${PROTOCOL}://${HOSTNAME}`;
 ---
 
 <BaseLayout pageTitle="Agregar un nuevo blog">
-  <form method="post" action={API_URL + "/api/blogs"}>
+  <form method="post" action={API_URL + "/api/blogs/newblog.json"}>
     <label for="titulo">Título</label>
     <input type="text" id="titulo" name="titulo" />
     <label for="subtitulo">Subtítulo</label>
