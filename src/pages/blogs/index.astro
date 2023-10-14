@@ -1,22 +1,6 @@
 ---
-import { app } from "../../firebase/server";
-import { getFirestore } from "firebase-admin/firestore";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-
-interface Blog {
-  id: string;
-  titulo: string;
-  subtitulo: string;
-  cuerpo: string;
-}
-
-const db = getFirestore(app);
-const blogsRef = db.collection("Blogs");
-const blogsSnapshot = await blogsRef.get();
-const blogs = blogsSnapshot.docs.map((doc) => ({
-  id: doc.id,
-  ...doc.data(),
-})) as Blog[];
+import { blogs } from "./blogs";
 ---
 
 <BaseLayout title="Mis blogs">
@@ -25,7 +9,7 @@ const blogs = blogsSnapshot.docs.map((doc) => ({
     {
       blogs.map((blog) => (
         <li>
-          <a href={`/blog/${blog.id}`}>{blog.titulo}</a>
+          <a href={`/blogs/${blog.id}`}>{blog.titulo}</a>
           <p>{blog.subtitulo}</p>
           <a href={`/edit/${blog.id}`}>Editar</a>
         </li>

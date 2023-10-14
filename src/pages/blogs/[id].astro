@@ -1,4 +1,5 @@
 ---
+export const prerender = false;
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { app } from "../../firebase/server";
 import { getFirestore } from "firebase-admin/firestore";
@@ -8,9 +9,7 @@ interface Blog {
   subtitulo: string;
   cuerpo: string;
 }
-
 const { id } = Astro.params;
-
 if (!id) {
   return Astro.redirect("/404");
 }
