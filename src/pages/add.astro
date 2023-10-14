@@ -1,13 +1,12 @@
 ---
-const PROTOCOL = import.meta.env.NODE_ENV === "production" ? "https" : "http";
-console.log(PROTOCOL);
-// const HOSTNAME = import.meta.env.DEPLOY_URL || "localhost:4321";
-// const API_URL = `${PROTOCOL}://${HOSTNAME}`;
 import BaseLayout from "../layouts/BaseLayout.astro";
+const PROTOCOL = import.meta.env.NODE_ENV === "production" ? "https" : "http";
+const HOSTNAME = import.meta.env.DEPLOY_URL || "localhost:4321";
+const API_URL = `${PROTOCOL}://${HOSTNAME}`;
 ---
 
 <BaseLayout pageTitle="Agregar un nuevo blog">
-  <form method="post" action="/api/blogs">
+  <form method="post" action={API_URL + "/api/blogs"}>
     <label for="titulo">Título</label>
     <input type="text" id="titulo" name="titulo" />
     <label for="subtitulo">Subtítulo</label>
