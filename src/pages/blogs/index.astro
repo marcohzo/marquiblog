@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { blogs } from "./blogs";
+import { getBlogs } from "../../data/getBlogs";
+const blogs = await getBlogs();
 ---
 
 <BaseLayout title="Mis blogs">
@@ -17,3 +18,4 @@ import { blogs } from "./blogs";
     }
   </ul>
 </BaseLayout>
+ ./getBlogs ../../data/getBlogs

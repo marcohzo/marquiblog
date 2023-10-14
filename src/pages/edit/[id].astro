@@ -1,16 +1,16 @@
 ---
-export const prerender = false;
 import { app } from "../../firebase/server";
 import { getFirestore } from "firebase-admin/firestore";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { blogs } from "../blogs/blogs";
+import { getBlogs } from "../../data/getBlogs";
 
 interface Blog {
   titulo: string;
   subtitulo: string;
   cuerpo: string;
 }
-export function getStaticPaths() {
+export async function getStaticPaths() {
+  const blogs = await getBlogs();
   const blogsId = blogs.map((blog) => {
     return {
       params: { id: blog.id },
@@ -64,3 +64,4 @@ const blog = blogSnapshot.data() as Blog;
     }
   });
 </script>
+ ../blogs/getBlogs ../../data/getBlogs
