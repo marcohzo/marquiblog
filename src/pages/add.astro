@@ -1,8 +1,7 @@
 ---
-export const PROTOCOL =
-  import.meta.env.NODE_ENV === "production" ? "https" : "http";
-export const HOSTNAME = import.meta.env.DEPLOY_URL || "localhost:4321";
-export const API_URL = `${PROTOCOL}://${HOSTNAME}`;
+const PROTOCOL = import.meta.env.NODE_ENV === "production" ? "https" : "http";
+const HOSTNAME = import.meta.env.DEPLOY_URL || "localhost:4321";
+const API_URL = `${PROTOCOL}://${HOSTNAME}`;
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
