@@ -6,7 +6,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout pageTitle="Agregar un nuevo blog">
-  <form method="post" action={API_URL + "/api/blogs"}>
+  <form method="post" action={"/api/blogs"}>
     <label for="titulo">Título</label>
     <input type="text" id="titulo" name="titulo" />
     <label for="subtitulo">Subtítulo</label>
