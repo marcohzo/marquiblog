@@ -3,7 +3,9 @@ import { app } from "../../../firebase/server";
 import { getFirestore } from "firebase-admin/firestore";
 
 export const POST: APIRoute = async ({ request, redirect }) => {
+  console.log('in api route')
   const formData = await request.formData();
+  console.log(formData)
   const titulo = formData.get("titulo")?.toString();
   const subtitulo = formData.get("subtitulo")?.toString();
   const cuerpo = formData.get("cuerpo")?.toString();
